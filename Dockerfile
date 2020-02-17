@@ -12,7 +12,6 @@ RUN echo "[multilib]" >> /etc/pacman.conf \
 RUN echo "[mingw64]"  >> /etc/pacman.conf \
     && echo "SigLevel = Optional TrustAll" >> /etc/pacman.conf \
     && echo "Server = http://repo.msys2.org/mingw/x86_64/" >> /etc/pacman.conf \
-    && echo "Server = http://repo.msys2.org/mingw/x86_64/" >> /etc/pacman.conf \
     && echo "Server = https://sourceforge.net/projects/msys2/files/REPOS/MINGW/x86_64/" >> /etc/pacman.conf \
     && echo "Server = http://www2.futureware.at/~nickoe/msys2-mirror/mingw/x86_64/" >> /etc/pacman.conf \
     && echo "Server = https://mirror.yandex.ru/mirrors/msys2/mingw/x86_64/" >> /etc/pacman.conf
