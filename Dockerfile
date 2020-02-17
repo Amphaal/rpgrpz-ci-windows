@@ -18,7 +18,7 @@ RUN echo "Server = http://repo.msys2.org/mingw/x86_64/"  >> /etc/pacman.conf \
 
 
 #update packman mirrors
-RUN pacman -Su
+RUN pacman -Syu
 
 #install requirements
 RUN pacman -S --noconfirm --noprogressbar \
