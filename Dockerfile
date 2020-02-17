@@ -19,26 +19,26 @@ RUN echo "[mingw64]"  >> /etc/pacman.conf \
 #update pacman
 RUN pacman -Syyu --noconfirm --noprogressbar 
 
-#install requirements
-RUN pacman -S --noconfirm --noprogressbar \
-    mingw-w64-x86_64-gstreamer \
-    mingw-w64-x86_64-gst-plugins-base \
-    mingw-w64-x86_64-gst-plugins-good \
-    mingw-w64-x86_64-qt-installer-framework \
-    mingw-w64-x86_64-qt5 \ 
-    mingw-w64-x86_64-miniupnpc \
-    mingw-w64-x86_64-breakpad-git \
-    mingw-w64-x86_64-gtest
-
-#install base build tools
-RUN pacman -S --noconfirm --noprogressbar git cmake ninja clang lld
-
 #install wine
 RUN pacman -S --noconfirm --noprogressbar wine
 
-# Cleanup
-RUN pacman -Scc --noconfirm
-RUN paccache -r -k0; \
-    rm -rf /usr/share/man/*; \
-    rm -rf /tmp/*; \
-    rm -rf /var/tmp/*;
+# #install requirements (some packages require to run some .exe)
+# RUN pacman -S --noconfirm --noprogressbar \
+#     mingw-w64-x86_64-gstreamer \
+#     mingw-w64-x86_64-gst-plugins-base \
+#     mingw-w64-x86_64-gst-plugins-good \
+#     mingw-w64-x86_64-qt-installer-framework \
+#     mingw-w64-x86_64-qt5 \ 
+#     mingw-w64-x86_64-miniupnpc \
+#     mingw-w64-x86_64-breakpad-git \
+#     mingw-w64-x86_64-gtest
+
+# #install base build tools
+# RUN pacman -S --noconfirm --noprogressbar git cmake ninja clang lld
+
+# # Cleanup
+# RUN pacman -Scc --noconfirm
+# RUN paccache -r -k0; \
+#     rm -rf /usr/share/man/*; \
+#     rm -rf /tmp/*; \
+#     rm -rf /var/tmp/*;
