@@ -7,13 +7,13 @@ USER root
 RUN pacman -Syyu --noconfirm --noprogressbar 
 
 #add multilib mirrorlist (for wine)
-RUN echo "[multilib]"  >> /etc/pacman.conf \
+RUN echo "[multilib]" >> /etc/pacman.conf \
     && echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf \
     && echo "" >> /etc/pacman.conf
 
 #add mingw64 mirrorlist
 RUN echo "[mingw64]"  >> /etc/pacman.conf \
-    && echo "SigLevel = Optional TrustAll" >> >> /etc/pacman.conf \
+    && echo "SigLevel = Optional TrustAll" >> /etc/pacman.conf \
     && echo "Server = http://repo.msys2.org/mingw/x86_64/" >> /etc/pacman.conf \
     && echo "Server = http://repo.msys2.org/mingw/x86_64/" >> /etc/pacman.conf \
     && echo "Server = https://sourceforge.net/projects/msys2/files/REPOS/MINGW/x86_64/" >> /etc/pacman.conf \
