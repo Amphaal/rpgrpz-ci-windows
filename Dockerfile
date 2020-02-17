@@ -3,9 +3,6 @@ LABEL maintainer="guillaume.vara@gmail.com"
 
 USER root
 
-#update pacman
-RUN pacman -Syyu --noconfirm --noprogressbar 
-
 #add multilib mirrorlist (for wine)
 RUN echo "[multilib]" >> /etc/pacman.conf \
     && echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf \
@@ -20,9 +17,8 @@ RUN echo "[mingw64]"  >> /etc/pacman.conf \
     && echo "Server = http://www2.futureware.at/~nickoe/msys2-mirror/mingw/x86_64/" >> /etc/pacman.conf \
     && echo "Server = https://mirror.yandex.ru/mirrors/msys2/mingw/x86_64/" >> /etc/pacman.conf
 
-
-#update packman mirrors
-RUN pacman -Syu
+#update pacman
+RUN pacman -Syyu --noconfirm --noprogressbar 
 
 # #install requirements
 # RUN pacman -S --noconfirm --noprogressbar \
