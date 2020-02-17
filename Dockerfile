@@ -3,6 +3,9 @@ LABEL maintainer="guillaume.vara@gmail.com"
 
 USER root
 
+#update pacman
+RUN pacman -Syyu --noconfirm --noprogressbar 
+
 #add multilib mirrorlist (for wine)
 RUN echo "[multilib]"  >> /etc/pacman.conf \
     && echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
@@ -13,14 +16,9 @@ RUN echo "Server = http://repo.msys2.org/mingw/x86_64/"  >> /etc/pacman.conf \
     && echo "Server = http://www2.futureware.at/~nickoe/msys2-mirror/mingw/x86_64/" >> /etc/pacman.conf \
     && echo "Server = https://mirror.yandex.ru/mirrors/msys2/mingw/x86_64/" >> /etc/pacman.conf
 
-#update pacman
-RUN pacman -Syyu --noconfirm --noprogressbar 
 
-#install base build tools
-RUN pacman -S --noconfirm --noprogressbar git cmake ninja clang lld
-
-#install wine
-RUN pacman -S --noconfirm --noprogressbar wine
+#update packman mirrors
+RUN pacman -Su
 
 #install requirements
 RUN pacman -S --noconfirm --noprogressbar \
@@ -32,6 +30,12 @@ RUN pacman -S --noconfirm --noprogressbar \
     mingw-w64-x86_64-miniupnpc \
     mingw-w64-x86_64-breakpad-git \
     mingw-w64-x86_64-gtest
+
+#install base build tools
+RUN pacman -S --noconfirm --noprogressbar git cmake ninja clang lld
+
+#install wine
+RUN pacman -S --noconfirm --noprogressbar wine
 
 # Cleanup
 RUN pacman -Scc --noconfirm
