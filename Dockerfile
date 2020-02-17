@@ -20,28 +20,28 @@ RUN echo "Server = http://repo.msys2.org/mingw/x86_64/"  >> /etc/pacman.conf \
 #update packman mirrors
 RUN pacman -Syu
 
-#install requirements
-RUN pacman -S --noconfirm --noprogressbar \
-    mingw-w64-x86_64-gstreamer \
-    mingw-w64-x86_64-gst-plugins-base \
-    mingw-w64-x86_64-gst-plugins-good \
-    mingw-w64-x86_64-qt-installer-framework \
-    mingw-w64-x86_64-qt5 \ 
-    mingw-w64-x86_64-miniupnpc \
-    mingw-w64-x86_64-breakpad-git \
-    mingw-w64-x86_64-gtest
+# #install requirements
+# RUN pacman -S --noconfirm --noprogressbar \
+#     mingw-w64-x86_64-gstreamer \
+#     mingw-w64-x86_64-gst-plugins-base \
+#     mingw-w64-x86_64-gst-plugins-good \
+#     mingw-w64-x86_64-qt-installer-framework \
+#     mingw-w64-x86_64-qt5 \ 
+#     mingw-w64-x86_64-miniupnpc \
+#     mingw-w64-x86_64-breakpad-git \
+#     mingw-w64-x86_64-gtest
 
-#install base build tools
-RUN pacman -S --noconfirm --noprogressbar git cmake ninja clang lld
+# #install base build tools
+# RUN pacman -S --noconfirm --noprogressbar git cmake ninja clang lld
 
-#install wine
-RUN pacman -S --noconfirm --noprogressbar wine
+# #install wine
+# RUN pacman -S --noconfirm --noprogressbar wine
 
-# Cleanup
-RUN pacman -Scc --noconfirm
-RUN paccache -r -k0; \
-    rm -rf /usr/share/man/*; \
-    rm -rf /tmp/*; \
-    rm -rf /var/tmp/*;
+# # Cleanup
+# RUN pacman -Scc --noconfirm
+# RUN paccache -r -k0; \
+#     rm -rf /usr/share/man/*; \
+#     rm -rf /tmp/*; \
+#     rm -rf /var/tmp/*;
 
 ENTRYPOINT /bin/bash
