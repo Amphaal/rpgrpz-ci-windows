@@ -38,7 +38,7 @@ RUN pacman -S --noconfirm --noprogressbar \
     mingw-w64-x86_64-gtest
 
 #install base build tools
-RUN pacman -S --noconfirm --noprogressbar git cmake ninja clang lld
+RUN pacman -S --noconfirm --noprogressbar git cmake ninja clang lld pkg-config
 
 # Cleanup
 RUN pacman -Scc --noconfirm
