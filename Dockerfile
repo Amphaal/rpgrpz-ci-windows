@@ -23,6 +23,9 @@ RUN pacman -Syyu --noconfirm --noprogressbar
 RUN pacman -S --noconfirm --noprogressbar wine
 RUN winecfg
 
+#define mingw64 root
+ENV MINGW64_ROOT /mingw64
+
 #install requirements (some packages require to run some .exe)
 RUN pacman -S --noconfirm --noprogressbar \
     mingw-w64-x86_64-gstreamer \
