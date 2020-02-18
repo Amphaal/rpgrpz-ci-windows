@@ -39,7 +39,6 @@ RUN pacman -S --noconfirm --noprogressbar git cmake ninja clang lld
 
 # Cleanup
 RUN pacman -Scc --noconfirm
-RUN paccache -r -k0; \
-    rm -rf /usr/share/man/*; \
+RUN rm -rf /usr/share/man/*; \
     rm -rf /tmp/*; \
     rm -rf /var/tmp/*;
