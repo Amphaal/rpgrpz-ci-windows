@@ -45,3 +45,6 @@ RUN pacman -Scc --noconfirm
 RUN rm -rf /usr/share/man/*; \
     rm -rf /tmp/*; \
     rm -rf /var/tmp/*;
+
+#additional search path for pkg-config
+ENV PKG_CONFIG_PATH /mingw64/lib/pkgconfig
