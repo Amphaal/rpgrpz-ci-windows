@@ -28,14 +28,14 @@ ENV MINGW64_ROOT /mingw64
 
 #install requirements (some packages require to run some .exe)
 RUN pacman -S --noconfirm --noprogressbar \
-    mingw-w64-x86_64-gstreamer \
-    mingw-w64-x86_64-gst-plugins-base \
-    mingw-w64-x86_64-gst-plugins-good \
-    mingw-w64-x86_64-qt-installer-framework \
-    mingw-w64-x86_64-qt5 \ 
-    mingw-w64-x86_64-miniupnpc \
-    mingw-w64-x86_64-breakpad-git \
-    mingw-w64-x86_64-gtest
+    mingw64/mingw-w64-x86_64-gstreamer \
+    mingw64/mingw-w64-x86_64-gst-plugins-base \
+    mingw64/mingw-w64-x86_64-gst-plugins-good \
+    mingw64/mingw-w64-x86_64-qt-installer-framework \
+    mingw64/mingw-w64-x86_64-qt5 \ 
+    mingw64/mingw-w64-x86_64-miniupnpc \
+    mingw64/mingw-w64-x86_64-breakpad-git \
+    mingw64/mingw-w64-x86_64-gtest
 
 #install base build tools
 RUN pacman -S --noconfirm --noprogressbar git cmake ninja clang lld pkg-config
