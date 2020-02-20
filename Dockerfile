@@ -58,7 +58,7 @@ USER devel
 ARG BUILDDIR=/tmp/tmp-build
 RUN  mkdir "${BUILDDIR}" && cd "${BUILDDIR}" && \
      git clone https://aur.archlinux.org/yay.git 
-RUN  cd yay && makepkg -si --noconfirm --rmdeps && \
+RUN  cd "${BUILDDIR}/yay" && makepkg -si --noconfirm --rmdeps && \
      rm -rf "${BUILDDIR}"
 
 #install AUR packages
