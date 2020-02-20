@@ -57,8 +57,8 @@ RUN mkdir -p /workdir && chown devel.users /workdir
 USER devel
 ARG BUILDDIR=/tmp/tmp-build
 RUN  mkdir "${BUILDDIR}" && cd "${BUILDDIR}" && \
-     git clone https://aur.archlinux.org/yay.git && \
-     cd yay && makepkg -si --noconfirm --rmdeps && \
+     git clone https://aur.archlinux.org/yay.git 
+RUN  cd yay && makepkg -si --noconfirm --rmdeps && \
      rm -rf "${BUILDDIR}"
 
 #install AUR packages
