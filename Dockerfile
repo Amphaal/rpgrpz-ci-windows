@@ -38,7 +38,7 @@ RUN pacman -S --noconfirm --noprogressbar \
     mingw64/mingw-w64-x86_64-gtest
 
 #install base build tools
-RUN pacman -S --noconfirm --noprogressbar git cmake ninja clang lld pkg-config
+RUN pacman -S --noconfirm --noprogressbar git cmake ninja clang lld pkg-config base-devel
 
 #additional search path for pkg-config
 ENV PKG_CONFIG_PATH /mingw64/lib/pkgconfig
