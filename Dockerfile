@@ -40,12 +40,6 @@ RUN pacman -S --noconfirm --noprogressbar \
 #install base build tools
 RUN pacman -S --noconfirm --noprogressbar git cmake ninja clang lld pkg-config
 
-# Cleanup
-RUN pacman -Scc --noconfirm
-RUN rm -rf /usr/share/man/*; \
-    rm -rf /tmp/*; \
-    rm -rf /var/tmp/*;
-
 #additional search path for pkg-config
 ENV PKG_CONFIG_PATH /mingw64/lib/pkgconfig
 
@@ -56,5 +50,32 @@ ENV EDITOR=nano
 RUN useradd -m -d /home/devel -u 1000 -U -G users,tty -s /bin/bash devel
 RUN echo 'devel ALL=(ALL) NOPASSWD: /usr/sbin/pacman, /usr/sbin/makepkg' >> /etc/sudoers;
 
-#create 
+#create working dir
 RUN mkdir -p /workdir && chown devel.users /workdir
+
+# Install yay
+USER devel
+ARG BUILDDIR=/tmp/tmp-build
+RUN  mkdir "${BUILDDIR}" && cd "${BUILDDIR}" && \
+     git clone https://aur.archlinux.org/yay.git && \
+     cd yay && makepkg -si --noconfirm --rmdeps && \
+     rm -rf "${BUILDDIR}"
+
+#install AUR packages
+RUN yay -S --noconfirm --noprogressbar --needed \
+        mingw-w64-clang-git
+
+# Cleanup
+USER root
+RUN pacman -Scc --noconfirm
+RUN rm -rf /usr/share/man/*; \
+    rm -rf /tmp/*; \
+    rm -rf /var/tmp/*;
+USER devel
+RUN yay -Scc
+
+#setup env
+ENV HOME=/home/devel
+WORKDIR /workdir
+ONBUILD USER root
+ONBUILD WORKDIR /
