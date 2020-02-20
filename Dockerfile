@@ -48,3 +48,13 @@ RUN rm -rf /usr/share/man/*; \
 
 #additional search path for pkg-config
 ENV PKG_CONFIG_PATH /mingw64/lib/pkgconfig
+
+#define nano as default editor for debuging purposes
+ENV EDITOR=nano
+
+# Create devel user...
+RUN useradd -m -d /home/devel -u 1000 -U -G users,tty -s /bin/bash devel
+RUN echo 'devel ALL=(ALL) NOPASSWD: /usr/sbin/pacman, /usr/sbin/makepkg' >> /etc/sudoers;
+
+#create 
+RUN mkdir -p /workdir && chown devel.users /workdir
