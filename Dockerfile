@@ -15,10 +15,10 @@ RUN echo "Set disable_coredump false" >> /etc/sudo.conf
 RUN pacman -Syyu --noconfirm --noprogressbar 
 
 #install base build tools (1/2)
-RUN pacman -S --noconfirm --noprogressbar pacman-contrib nano wget base-devel make
+RUN pacman -S --noconfirm --noprogressbar --needed pacman-contrib nano wget base-devel make
 
 #install base build tools (2/2)
-RUN pacman -S --noconfirm --noprogressbar git cmake ninja clang lld pkg-config 
+RUN pacman -S --noconfirm --noprogressbar --needed git cmake ninja clang lld pkg-config 
 
 #define nano as default editor for debuging purposes
 ENV EDITOR=nano
