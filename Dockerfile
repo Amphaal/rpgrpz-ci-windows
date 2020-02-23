@@ -10,6 +10,10 @@ RUN pacman -S --noconfirm --noprogressbar --needed base-devel git nano
 #define nano as default editor
 ENV EDITOR=nano
 
+# Create devel user...
+RUN useradd -m -d /home/devel -u 1000 -U -G users,tty -s /bin/bash devel
+RUN echo 'devel ALL=(ALL) NOPASSWD: /usr/sbin/pacman, /usr/sbin/makepkg' >> /etc/sudoers;
+
 # Install yay
 USER devel
 ARG BUILDDIR=/tmp/tmp-build
