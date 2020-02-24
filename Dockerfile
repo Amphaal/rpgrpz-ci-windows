@@ -14,6 +14,9 @@ ENV EDITOR=nano
 RUN useradd -m -d /home/devel -u 1000 -U -G users,tty -s /bin/bash devel
 RUN echo 'devel ALL=(ALL) NOPASSWD: /usr/sbin/pacman, /usr/sbin/makepkg' >> /etc/sudoers;
 
+#Workaround for the "setrlimit(RLIMIT_CORE): Operation not permitted" error when compiling yay
+RUN echo "Set disable_coredump false" >> /etc/sudo.conf
+
 # Install yay
 USER devel
 ARG BUILDDIR=/tmp/tmp-build
