@@ -27,7 +27,7 @@ RUN  mkdir "${BUILDDIR}" && cd "${BUILDDIR}" && \
 
 #install build prerequisites (1 / 2)
 USER root
-RUN pacman -S --noconfirm --noprogressbar --needed ninja ldd
+RUN pacman -S --noconfirm --noprogressbar --needed ninja lld
 
 #install build prerequisites (2 / 2)
 USER devel
