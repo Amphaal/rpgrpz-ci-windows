@@ -31,7 +31,8 @@ USER root
     #add multilib mirrorlist (for wine)
     RUN echo "[multilib]" >> /etc/pacman.conf \
         && echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf \
-        && echo "" >> /etc/pacman.conf
+        && echo "" >> /etc/pacman.conf \
+        && pacman -Sy
 
     #install build prerequisites (1 / 2)
     RUN pacman -S --noconfirm --noprogressbar --needed ninja lld wine cmake clang llvm
