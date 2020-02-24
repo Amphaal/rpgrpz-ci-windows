@@ -39,8 +39,7 @@ USER root
 
 USER devel
     #install build prerequisites (2 / 2)
-    RUN yay -S --noconfirm --noprogressbar --needed \
-            mingw-w64-wine \
-            mingw-w64-cmake \
-            mingw-w64-clang-git \
-            mingw-w64-llvm
+    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-wine
+    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-cmake
+    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-clang-git
+    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-llvm
