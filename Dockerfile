@@ -25,6 +25,11 @@ RUN  mkdir "${BUILDDIR}" && cd "${BUILDDIR}" && \
      cd yay && makepkg -si --noconfirm --rmdeps && \
      rm -rf "${BUILDDIR}"
 
+#add multilib mirrorlist (for wine)
+RUN echo "[multilib]" >> /etc/pacman.conf \
+    && echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf \
+    && echo "" >> /etc/pacman.conf
+
 #install build prerequisites (1 / 2)
 USER root
 RUN pacman -S --noconfirm --noprogressbar --needed ninja lld wine cmake clang llvm
