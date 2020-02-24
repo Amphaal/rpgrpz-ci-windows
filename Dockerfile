@@ -26,9 +26,11 @@ RUN  mkdir "${BUILDDIR}" && cd "${BUILDDIR}" && \
      rm -rf "${BUILDDIR}"
 
 #install build prerequisites (1 / 2)
+USER root
 RUN pacman -S --noconfirm --noprogressbar --needed ninja ldd
 
 #install build prerequisites (2 / 2)
+USER devel
 RUN yay -S --noconfirm --noprogressbar --needed \
         mingw-w64-wine \
         mingw-w64-cmake \
