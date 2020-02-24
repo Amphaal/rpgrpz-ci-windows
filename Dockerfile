@@ -24,3 +24,13 @@ RUN  mkdir "${BUILDDIR}" && cd "${BUILDDIR}" && \
      git clone https://aur.archlinux.org/yay.git && \
      cd yay && makepkg -si --noconfirm --rmdeps && \
      rm -rf "${BUILDDIR}"
+
+#install build prerequisites (1 / 2)
+RUN pacman -S --noconfirm --noprogressbar --needed ninja ldd
+
+#install build prerequisites (2 / 2)
+RUN yay -S --noconfirm --noprogressbar --needed \
+        mingw-w64-wine \
+        mingw-w64-cmake \
+        mingw-w64-clang-git \
+        mingw-w64-llvm
