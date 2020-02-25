@@ -59,4 +59,5 @@ USER devel
     RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-z3
     RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-llvm
 
+USER root
 CMD [ "/usr/bin/bash" ]
