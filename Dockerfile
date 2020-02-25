@@ -51,25 +51,26 @@ USER devel
     RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-clang-git 
     RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-cmake 
 
-#add msys2 mirrorlist
-RUN echo "[mingw64]"  >> /etc/pacman.conf \
-    && echo "SigLevel = Optional TrustAll" >> /etc/pacman.conf \
-    && echo "Server = http://repo.msys2.org/mingw/x86_64/" >> /etc/pacman.conf \
-    && echo "Server = https://sourceforge.net/projects/msys2/files/REPOS/MINGW/x86_64/" >> /etc/pacman.conf \
-    && echo "Server = http://www2.futureware.at/~nickoe/msys2-mirror/mingw/x86_64/" >> /etc/pacman.conf \
-    && echo "Server = https://mirror.yandex.ru/mirrors/msys2/mingw/x86_64/" >> /etc/pacman.conf \
-    && pacman -Sy 
-
-#install requirements (some packages require to run some .exe)
-RUN pacman -S --noconfirm --noprogressbar \
-    mingw64/mingw-w64-x86_64-gstreamer \
-    mingw64/mingw-w64-x86_64-gst-plugins-base \
-    mingw64/mingw-w64-x86_64-gst-plugins-good \
-    mingw64/mingw-w64-x86_64-qt-installer-framework \
-    mingw64/mingw-w64-x86_64-qt5 \ 
-    mingw64/mingw-w64-x86_64-miniupnpc \
-    mingw64/mingw-w64-x86_64-breakpad-git
-
 USER root
+    #add msys2 mirrorlist
+    RUN echo "[mingw64]"  >> /etc/pacman.conf \
+        && echo "SigLevel = Optional TrustAll" >> /etc/pacman.conf \
+        && echo "Server = http://repo.msys2.org/mingw/x86_64/" >> /etc/pacman.conf \
+        && echo "Server = https://sourceforge.net/projects/msys2/files/REPOS/MINGW/x86_64/" >> /etc/pacman.conf \
+        && echo "Server = http://www2.futureware.at/~nickoe/msys2-mirror/mingw/x86_64/" >> /etc/pacman.conf \
+        && echo "Server = https://mirror.yandex.ru/mirrors/msys2/mingw/x86_64/" >> /etc/pacman.conf \
+        && pacman -Sy 
+
+    #install requirements (some packages require to run some .exe)
+    RUN pacman -S --noconfirm --noprogressbar \
+        mingw64/mingw-w64-x86_64-gstreamer \
+        mingw64/mingw-w64-x86_64-gst-plugins-base \
+        mingw64/mingw-w64-x86_64-gst-plugins-good \
+        mingw64/mingw-w64-x86_64-qt-installer-framework \
+        mingw64/mingw-w64-x86_64-qt5 \ 
+        mingw64/mingw-w64-x86_64-miniupnpc \
+        mingw64/mingw-w64-x86_64-breakpad-git
+
+
 CMD [ "/usr/bin/bash" ]
 COPY compile.sh /
