@@ -1,0 +1,7 @@
+version: '2'
+services:
+    portainer:
+        container_name: rpgrpz-windows-ci
+        image: rpgrpz-windows-ci:latest
+        restart: always
+        entrypoint: /bin/bash
