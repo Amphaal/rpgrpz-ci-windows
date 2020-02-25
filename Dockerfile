@@ -61,3 +61,4 @@ USER devel
 
 USER root
 CMD [ "/usr/bin/bash" ]
+COPY compile.sh /
