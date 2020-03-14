@@ -69,7 +69,8 @@ USER root
         mingw64/mingw-w64-x86_64-qt-installer-framework \
         mingw64/mingw-w64-x86_64-qt5 \ 
         mingw64/mingw-w64-x86_64-miniupnpc \
-        mingw64/mingw-w64-x86_64-breakpad-git
+        mingw64/mingw-w64-x86_64-breakpad-git \
+        mingw64/mingw-w64-x86_64-uasm
 
 
 CMD [ "/usr/bin/bash" ]
