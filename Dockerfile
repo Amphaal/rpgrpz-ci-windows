@@ -1,6 +1,5 @@
-FROM amphaal/rpgrpz-ci-windows:latest
+FROM amphaal/rpgrpz-docker-ci:latest
 LABEL maintainer="guillaume.vara@gmail.com"
-
 
 USER root
     #add multilib mirrorlist (for wine)
@@ -13,7 +12,6 @@ USER root
     RUN pacman -S --noconfirm --noprogressbar --needed wine
 
 USER devel
-
     #install build prerequisites (2 / 3) (prebuilt requisites)
     RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-crt-bin \ 
                                                     mingw-w64-gcc-bin \ 
@@ -45,7 +43,6 @@ USER root
         mingw64/mingw-w64-x86_64-qt5 \ 
         mingw64/mingw-w64-x86_64-miniupnpc \
         mingw64/mingw-w64-x86_64-uasm
-
 
 CMD [ "/usr/bin/bash" ]
 COPY compile.sh /
