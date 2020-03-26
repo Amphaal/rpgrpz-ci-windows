@@ -1,6 +1,0 @@
-version: '3'
-services:
-    ci:
-        container_name: rpgrpz-windows-ci
-        image: rpgrpz-windows-ci:latest
-        tty: true

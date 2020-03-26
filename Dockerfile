@@ -47,4 +47,3 @@ USER root
     RUN yay -S --noconfirm --noprogressbar --needed uasm
     
 CMD [ "/usr/bin/bash" ]
-COPY compile.sh /
