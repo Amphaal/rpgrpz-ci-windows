@@ -13,16 +13,13 @@ USER root
 
 USER devel
     #install build prerequisites (2 / 3) (prebuilt requisites)
-    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-crt-bin \ 
-                                                    mingw-w64-gcc-bin \ 
-                                                    mingw-w64-binutils-bin \ 
-                                                    mingw-w64-winpthreads-bin \
-                                                    mingw-w64-headers-bin
+    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-crt-bin
+    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-binutils-bin
+    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-winpthreads-bin
+    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-headers-bin
     
     #install build prerequisites (3 / 3) (helpers)
-    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-wine
     RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-clang-git 
-    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-cmake 
 
 USER root
     #add msys2 mirrorlist
@@ -35,14 +32,13 @@ USER root
         && pacman -Syu --needed --noconfirm
 
     #install requirements (some packages require to run some .exe)
-    RUN pacman -S --noconfirm --noprogressbar \
-        mingw64/mingw-w64-x86_64-gstreamer \
-        mingw64/mingw-w64-x86_64-gst-plugins-base \
-        mingw64/mingw-w64-x86_64-gst-plugins-good \
-        mingw64/mingw-w64-x86_64-qt-installer-framework \
-        mingw64/mingw-w64-x86_64-qt5 \ 
-        mingw64/mingw-w64-x86_64-miniupnpc
-    
+    RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-qt5
+    RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-gstreamer
+    RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-gst-plugins-base
+    RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-gst-plugins-good
+    RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-qt-installer-framework
+    RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-miniupnpc
+        
     #install uasm
     RUN yay -S --noconfirm --noprogressbar --needed uasm
     
