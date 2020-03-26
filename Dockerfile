@@ -41,8 +41,10 @@ USER root
         mingw64/mingw-w64-x86_64-gst-plugins-good \
         mingw64/mingw-w64-x86_64-qt-installer-framework \
         mingw64/mingw-w64-x86_64-qt5 \ 
-        mingw64/mingw-w64-x86_64-miniupnpc \
-        mingw64/mingw-w64-x86_64-uasm
-
+        mingw64/mingw-w64-x86_64-miniupnpc
+    
+    #install uasm
+    RUN yay -S --noconfirm --noprogressbar --needed uasm
+    
 CMD [ "/usr/bin/bash" ]
 COPY compile.sh /
