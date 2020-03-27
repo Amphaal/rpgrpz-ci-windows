@@ -44,6 +44,5 @@ USER devel
     RUN yay -S --noconfirm --noprogressbar --needed uasm
 
 USER root
-    ENTRYPOINT ["/usr/sbin/init"]
-    RUN systemctl start --now systemd-binfmt.service
+    CMD /usr/sbin/init systemctl start --now systemd-binfmt.service
     CMD [ "/usr/bin/bash" ]
