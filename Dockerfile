@@ -44,5 +44,7 @@ USER devel
     RUN yay -S --noconfirm --noprogressbar --needed uasm
 
 USER root
-    CMD /usr/sbin/init systemctl start --now systemd-binfmt.service
+    #install wine service
+    RUN ["/usr/sbin/init", "systemctl start --now", "systemd-binfmt.service"]   
+
     CMD [ "/usr/bin/bash" ]
