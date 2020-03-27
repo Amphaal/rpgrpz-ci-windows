@@ -42,8 +42,6 @@ USER root
 USER devel
     #install uasm
     RUN yay -S --noconfirm --noprogressbar --needed uasm
-    #install qt5 base for tools (MOC, UIC...)
-    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-qt5-base 
 
 USER root
     CMD [ "/usr/bin/bash" ]
