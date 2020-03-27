@@ -45,6 +45,6 @@ USER devel
 
 USER root
     #install wine service
-    RUN ["/usr/sbin/init", "systemctl start --now", "systemd-binfmt.service"]   
+    RUN ["/lib/systemd/systemd", "systemctl start --now", "systemd-binfmt.service"]   
 
     CMD [ "/usr/bin/bash" ]
