@@ -38,10 +38,7 @@ USER root
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-gst-plugins-good
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-qt-installer-framework
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-miniupnpc
-
-USER devel
-    #install uasm
-    RUN yay -S --noconfirm --noprogressbar --needed uasm
+    RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-uasm
 
 USER root 
     # setup wine
