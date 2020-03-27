@@ -44,4 +44,7 @@ USER devel
     RUN yay -S --noconfirm --noprogressbar --needed uasm
 
 USER root
+    #install qt5 base for tools (MOC, UIC...)
+    RUN pacman -S --noconfirm --noprogressbar qt5-base
+
     CMD [ "/usr/bin/bash" ]
