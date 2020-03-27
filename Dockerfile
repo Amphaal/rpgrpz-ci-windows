@@ -44,10 +44,13 @@ USER devel
     RUN yay -S --noconfirm --noprogressbar --needed uasm
 
 USER root 
-    # Turn off Fixme warnings
+    # setup wine
     ENV WINEDEBUG=fixme-all
-    # Setup Wine prefix
     ENV WINEARCH=win64
     RUN winecfg
+    
+    #rename header files
+    RUN cd /usr/x86_64-w64-mingw32 \ 
+        && cp ntsecapi.h NTSecAPI.h
 
     CMD [ "/usr/bin/bash" ]
