@@ -43,8 +43,5 @@ USER devel
     #install uasm
     RUN yay -S --noconfirm --noprogressbar --needed uasm
 
-USER root
-    #install wine service
-    RUN ["/lib/systemd/systemd", "systemctl start --now", "systemd-binfmt.service"]   
-
+USER root 
     CMD [ "/usr/bin/bash" ]
