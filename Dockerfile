@@ -50,7 +50,7 @@ USER root
     RUN winecfg
     
     #rename header files
-    RUN cd /usr/x86_64-w64-mingw32 \ 
+    RUN cd /usr/x86_64-w64-mingw32/include \ 
         && cp ntsecapi.h NTSecAPI.h
 
     CMD [ "/usr/bin/bash" ]
