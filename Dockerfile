@@ -44,4 +44,11 @@ USER devel
     RUN yay -S --noconfirm --noprogressbar --needed uasm
 
 USER root 
+    # Turn off Fixme warnings
+    ENV WINEDEBUG=fixme-all
+    # Setup Wine prefix
+    ENV WINEPREFIX=/root/.7z 
+    ENV WINEARCH=win64
+    RUN winecfg
+
     CMD [ "/usr/bin/bash" ]
