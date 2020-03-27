@@ -52,5 +52,7 @@ USER root
     #rename header files
     RUN cd /usr/x86_64-w64-mingw32/include \ 
         && cp ntsecapi.h NTSecAPI.h
-
+    
+    RUN pacman -S --noconfirm --noprogressbar mingw-w64-x86_64-zlib
+    
     CMD [ "/usr/bin/bash" ]
