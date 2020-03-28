@@ -14,6 +14,7 @@ USER root
     # setup wine
     ENV WINEDEBUG=fixme-all
     ENV WINEARCH=win64
+    ENV WINEPATH=/mingw64/bin
     RUN winecfg
     
     #add msys2 mirrorlist
@@ -30,8 +31,6 @@ USER root
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-gstreamer
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-gst-plugins-base
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-gst-plugins-good
-    RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-clang
-    RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-lld
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-qt-installer-framework
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-miniupnpc
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-uasm
