@@ -8,20 +8,14 @@ USER root
         && echo "" >> /etc/pacman.conf \
         && pacman -Sy
 
-    #install build prerequisites (1 / 3) (base)
+    #install build prerequisites
     RUN pacman -S --noconfirm --noprogressbar --needed wine
-
-USER devel
-    #install build prerequisites (2 / 3) (prebuilt requisites)
-    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-crt-bin
-    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-binutils-bin
-    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-winpthreads-bin
-    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-headers-bin
     
-    #install build prerequisites (3 / 3) (helpers)
-    RUN yay -S --noconfirm --noprogressbar --needed mingw-w64-clang-git 
-
-USER root
+    # setup wine
+    ENV WINEDEBUG=fixme-all
+    ENV WINEARCH=win64
+    RUN winecfg
+    
     #add msys2 mirrorlist
     RUN echo "[mingw64]"  >> /etc/pacman.conf \
         && echo "SigLevel = Optional TrustAll" >> /etc/pacman.conf \
@@ -36,18 +30,14 @@ USER root
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-gstreamer
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-gst-plugins-base
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-gst-plugins-good
+    RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-clang
+    RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-lld
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-qt-installer-framework
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-miniupnpc
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-uasm
 
-USER root 
-    # setup wine
-    ENV WINEDEBUG=fixme-all
-    ENV WINEARCH=win64
-    RUN winecfg
-    
     #rename header files
-    RUN cd /usr/x86_64-w64-mingw32/include \ 
+    RUN cd /mingw64/x86_64-w64-mingw32/include \ 
         && cp ntsecapi.h NTSecAPI.h
     
     CMD [ "/usr/bin/bash" ]
