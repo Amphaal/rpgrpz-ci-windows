@@ -1,4 +1,2 @@
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/amphaal/rpgrpz-ci-windows)
 # RPG-RPZ Docker CI Image for Linux to Windows Cross Compilation (Clang + LLVM + Mingw64)
-Highly inspired by https://github.com/mdimura/docker-mingw-arch.
-
-Make sure that the Docker host enabled .exe usage with `sudo systemctl restart systemd-binfmt.service`.
