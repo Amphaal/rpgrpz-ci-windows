@@ -39,4 +39,7 @@ USER root
     RUN cd /mingw64/x86_64-w64-mingw32/include \ 
         && cp ntsecapi.h NTSecAPI.h
     
+    #install sentry-cli    
+    RUN curl -sL https://sentry.io/get-cli/ | bash
+    
     CMD [ "/usr/bin/bash" ]
