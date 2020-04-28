@@ -34,6 +34,7 @@ USER root
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-qt-installer-framework
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-miniupnpc
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-uasm
+    RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-openssl
 
     #rename header files
     RUN cd /mingw64/x86_64-w64-mingw32/include \ 
