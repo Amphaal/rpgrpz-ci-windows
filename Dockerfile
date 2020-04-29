@@ -6,7 +6,7 @@ USER root
     RUN echo "[multilib]" >> /etc/pacman.conf \
         && echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf \
         && echo "" >> /etc/pacman.conf \
-        && pacman -Sy
+        && pacman -Syyu
 
     #install build prerequisites
     RUN pacman -S --noconfirm --noprogressbar --needed wine
@@ -24,7 +24,7 @@ USER root
         && echo "Server = https://sourceforge.net/projects/msys2/files/REPOS/MINGW/x86_64/" >> /etc/pacman.conf \
         && echo "Server = http://www2.futureware.at/~nickoe/msys2-mirror/mingw/x86_64/" >> /etc/pacman.conf \
         && echo "Server = https://mirror.yandex.ru/mirrors/msys2/mingw/x86_64/" >> /etc/pacman.conf \
-        && pacman -Syu --needed --noconfirm
+        && pacman -Syyu --needed --noconfirm
 
     #install requirements (some packages require to run some .exe)
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-qt5
@@ -34,7 +34,6 @@ USER root
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-qt-installer-framework
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-miniupnpc
     RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-uasm
-    RUN pacman -S --noconfirm --noprogressbar mingw64/mingw-w64-x86_64-openssl
 
     #rename header files
     RUN cd /mingw64/x86_64-w64-mingw32/include \ 
