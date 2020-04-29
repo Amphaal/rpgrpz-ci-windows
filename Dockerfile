@@ -15,7 +15,8 @@ USER root
         && echo "Server = http://www2.futureware.at/~nickoe/msys2-mirror/mingw/x86_64/" >> /etc/pacman.conf \
         && echo "Server = https://mirror.yandex.ru/mirrors/msys2/mingw/x86_64/" >> /etc/pacman.conf
     
-    RUN pacman -Syyu
+    # update mirrorlist
+    RUN pacman -Syyu --needed --noconfirm
 
     #install build prerequisites
     RUN pacman -S --noconfirm --noprogressbar --needed wine
