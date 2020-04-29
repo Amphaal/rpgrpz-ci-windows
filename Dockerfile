@@ -19,7 +19,7 @@ USER root
     RUN pacman -Syyu --needed --noconfirm
 
     #install build prerequisites
-    RUN pacman -S --noconfirm --noprogressbar --needed wine
+    RUN pacman -S --noconfirm --noprogressbar --needed wine mpg123
     
     # setup wine
     ENV WINEDEBUG=fixme-all
