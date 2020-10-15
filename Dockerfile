@@ -1,4 +1,4 @@
-FROM amphaal/rpgrpz-docker-ci:latest
+FROM amphaal/base-docker-ci:latest
 LABEL maintainer="guillaume.vara@gmail.com"
 
 USER root
