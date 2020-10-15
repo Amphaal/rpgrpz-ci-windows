@@ -9,11 +9,15 @@ USER root
         
     #add msys2 mirrorlist
     RUN echo "[mingw64]"  >> /etc/pacman.conf \
-        && echo "SigLevel = Optional TrustAll" >> /etc/pacman.conf \
-        && echo "Server = http://repo.msys2.org/mingw/x86_64/" >> /etc/pacman.conf \
+        && echo "SigLevel = Never" >> /etc/pacman.conf \
         && echo "Server = https://sourceforge.net/projects/msys2/files/REPOS/MINGW/x86_64/" >> /etc/pacman.conf \
-        && echo "Server = http://www2.futureware.at/~nickoe/msys2-mirror/mingw/x86_64/" >> /etc/pacman.conf \
-        && echo "Server = https://mirror.yandex.ru/mirrors/msys2/mingw/x86_64/" >> /etc/pacman.conf
+        && echo "Server = https://www2.futureware.at/~nickoe/msys2-mirror/mingw/x86_64/" >> /etc/pacman.conf \
+        && echo "Server = https://mirror.yandex.ru/mirrors/msys2/mingw/x86_64/" >> /etc/pacman.conf \
+        && echo "Server = https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/x86_64/" >> /etc/pacman.conf \
+        && echo "Server = http://mirrors.ustc.edu.cn/msys2/mingw/x86_64/" >> /etc/pacman.conf \
+        && echo "Server = http://mirror.bit.edu.cn/msys2/mingw/x86_64/" >> /etc/pacman.conf \
+        && echo "Server = https://mirror.selfnet.de/msys2/mingw/x86_64/" >> /etc/pacman.conf \
+        && echo "Server = https://mirrors.sjtug.sjtu.edu.cn/msys2/mingw/x86_64/" >> /etc/pacman.conf
     
     # update mirrorlist
     RUN pacman -Syyu --needed --noconfirm
