@@ -14,7 +14,7 @@ USER root
     RUN cd /mingw64/x86_64-w64-mingw32/include \ 
         && cp ntsecapi.h NTSecAPI.h
     
-    #create wrappers
+    #populate wrappers
     RUN echo "/mingw64/bin/lrelease.exe" > ./wine-wrappers/wrappersList.txt
     RUN echo "/mingw64/bin/lupdate.exe" >> ./wine-wrappers/wrappersList.txt
     RUN echo "/mingw64/bin/moc.exe" >> ./wine-wrappers/wrappersList.txt
@@ -23,6 +23,10 @@ USER root
     RUN echo "/mingw64/bin/uic.exe" >> ./wine-wrappers/wrappersList.txt
     RUN echo "/mingw64/bin/windeployqt.exe" >> ./wine-wrappers/wrappersList.txt
     
+    #build and install wrappers
+    RUN cd wine-wrappers && rm -rf _gen && cmake -GNinja -B_gen -H. && ninja -C_gen install && cd ..
+
+
     # #install sentry-cli    
     # RUN curl -sL https://sentry.io/get-cli/ | bash
     
