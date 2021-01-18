@@ -17,9 +17,6 @@ USER root
     
     #build and install wrappers
     RUN cd wine-wrappers && rm -rf _gen && cmake -GNinja -B_gen -H. && ninja -C_gen install && cd ..
-
-    #-install sentry-cli    
-    RUN curl -sL https://sentry.io/get-cli/ | bash
     
     #
     CMD [ "/usr/bin/bash" ]
